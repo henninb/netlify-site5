@@ -22,6 +22,8 @@ const apis = [
 ]
 
 const sites = [
+  { name: 'brianhenning.com', url: 'https://brianhenning.com' },
+  { name: 'bhenning.com', url: 'https://bhenning.com' },
   { name: 'site1', url: 'https://site1.bhenning.com' },
   { name: 'site2', url: 'https://site2.bhenning.com' },
   { name: 'site3', url: 'https://site3.bhenning.com' },
