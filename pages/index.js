@@ -194,9 +194,9 @@ export default function Home() {
         <div className="header-rule" />
       </header>
 
-      <Section label="Tools &amp; Pages" items={tools} startIndex={0} />
-      <Section label="APIs &amp; Functions" items={apis} startIndex={tools.length} />
-      <Section label="Sites" items={sites} startIndex={tools.length + apis.length} />
+      <Section label="Sites" items={sites} startIndex={0} />
+      <Section label="Tools &amp; Pages" items={tools} startIndex={sites.length} />
+      <Section label="APIs &amp; Functions" items={apis} startIndex={sites.length + tools.length} />
 
       <footer>bhenning.com &mdash; site5</footer>
 
