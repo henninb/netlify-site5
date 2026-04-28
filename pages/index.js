@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import Head from 'next/head'
 
 const tools = [
@@ -21,19 +22,6 @@ const apis = [
   { name: 'huskies', path: '/api/huskies', badge: 'api' },
 ]
 
-const sites = [
-  { name: 'brianhenning.com', url: 'https://brianhenning.com' },
-  { name: 'bhenning.com', url: 'https://bhenning.com' },
-  { name: 'site1', url: 'https://site1.bhenning.com' },
-  { name: 'site2', url: 'https://site2.bhenning.com' },
-  { name: 'site3', url: 'https://site3.bhenning.com' },
-  { name: 'site4', url: 'https://site4.bhenning.com' },
-  { name: 'site5', url: 'https://site5.bhenning.com' },
-  { name: 'site6', url: 'https://site6.bhenning.com' },
-  { name: 'site7', url: 'https://site7.bhenning.com' },
-  { name: 'site8', url: 'https://site8.bhenning.com' },
-  { name: 'site9', url: 'https://site9.bhenning.com' },
-]
 
 function Card({ name, path, url, badge, index }) {
   const href = url || path
@@ -180,6 +168,22 @@ function Section({ label, items, startIndex = 0 }) {
 }
 
 export default function Home() {
+  const [baseDomain, setBaseDomain] = useState('bhenning.com')
+
+  useEffect(() => {
+    const parts = window.location.hostname.split('.')
+    if (parts.length >= 2) setBaseDomain(parts.slice(-2).join('.'))
+  }, [])
+
+  const sites = [
+    { name: 'brianhenning.com', url: 'https://brianhenning.com' },
+    { name: 'bhenning.com', url: 'https://bhenning.com' },
+    ...Array.from({ length: 9 }, (_, i) => ({
+      name: `site${i + 1}`,
+      url: `https://site${i + 1}.${baseDomain}`,
+    })),
+  ]
+
   return (
     <>
       <Head>
